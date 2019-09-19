@@ -1,2 +1,2 @@
 # InternetingIsHard
-My practice webpages from this tutorial - https://internetingishard.com/
+My practice webpages from [this tutorial](https://internetingishard.com/)
