@@ -9,6 +9,10 @@
 
 # Common
 
-1. [Reference](https://developer.mozilla.org/en-US/) about internet development
+1. [Reference](https://developer.mozilla.org/en-US/) about web development
+1. Front end fundamentals [book series](https://abookapart.com/collections/front-end-fundamentals)
+
 # Etc
-2. Interactive web-development online [code editor](https://codepen.io/)
+
+1. Interactive web-development online [code editor](https://codepen.io/)
+1. [Tools](https://geekflare.com/) for your website
