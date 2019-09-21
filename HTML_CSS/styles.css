@@ -16,11 +16,11 @@ a:hover {
 
 .header {
   position: fixed;
-  left: 12.5%;
+  /*left: 12.5%;*/
 
-  width: 75%;
+  /*width: 75%;*/
   padding: 50px;
-  padding-right: 0px;
+  /*padding-right: 0px;*/
 
   background: #D6E9FE;
   border-bottom-right-radius: 20px;
@@ -96,16 +96,6 @@ a:hover {
 .features-menu {
   display: none;
 }
-
-
-
-
-
-
-
-
-
-
 
 .fulfiller {
   height: 200px;
