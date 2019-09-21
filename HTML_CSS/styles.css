@@ -4,9 +4,18 @@
   box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
+body {
+  background-color: gray;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
 a:link,
 a:visited {
-  color: #5D6063;
+  color: green;
   text-decoration: none;
 }
 
@@ -16,20 +25,22 @@ a:hover {
 
 .header {
   position: fixed;
-  /*left: 12.5%;*/
+  left: 12.5%;
 
-  /*width: 75%;*/
-  padding: 50px;
-  /*padding-right: 0px;*/
+  width: 75%;
+  height: 15%;
+  padding: 3%;
 
-  background: #D6E9FE;
+  background: #E27D60;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   font-family: "Monospace";
+  z-index: 1;
 }
 
 .logo {
@@ -54,7 +65,7 @@ a:hover {
 .features-menu {
   display: flex;
   flex-direction: column;
-  background: #B2D6FF;
+  background: #85DCB;
   border-radius: 5px;
   padding-top: 60px;
 
@@ -67,7 +78,7 @@ a:hover {
 
 .features-menu li {
   list-style: none;
-  border-bottom: 1px solid #FFF;
+  border-bottom: 1px solid #85DCB;
 
   padding: 0 40px 10px 20px;
   margin: 10px;
@@ -90,14 +101,30 @@ a:hover {
 .dropdown:hover .features-menu {
   display: flex;
   flex-direction: column;
-  background: #B2D6FF;
+  background: #C38D9E;
 }
 
 .features-menu {
   display: none;
 }
 
-.fulfiller {
-  height: 200px;
-  background-color: green;
+.page {
+  background-color: #41B3A3;
+  padding: 50px;
+
+  position: relative;
+  top: 15%;
+  
+  border-radius: 10px;
+
+  width: 70%;
+  margin: 0 auto;
+
+  font-size: 2.5vw;
+  z-index: 0;
+}
+
+.page > p {
+  margin: 5% 1%;
+  margin-top: 0;
 }
