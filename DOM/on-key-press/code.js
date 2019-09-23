@@ -40,6 +40,6 @@ let whole_page = document.getElementById("whole-page");
 createNContainers(divs_num, whole_page)
 
 let interval = undefined;
-window.addEventListener("keydown", () => {
-  interval = interval ? clearInterval(interval) : setInterval(colorChangeHandler, default_interval);
-}, false)
+let blink = () => interval = interval ? clearInterval(interval) : setInterval(colorChangeHandler, default_interval)
+window.addEventListener("pointerdown",  blink, false)
+window.addEventListener("keydown",  blink, false)
