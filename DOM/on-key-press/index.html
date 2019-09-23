@@ -2,8 +2,36 @@
 <html>
   <head>
     <title>On key press</title>
-    <script type="text/javascript" src="code.js"/></script>
+    <style>
+      #whole-page {
+        position: absolute;
+        width:100%;
+        height:100%;
+        top: 0;
+        left: 0;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        background-color: yellow;
+      }
+
+      .container
+      {
+        width: 75%;
+        height: 75%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+    </style>
   </head>
-  <body onload="onKeyPressHandler()">
+  <body>
+    <div id="whole-page">
+    </div>
+
+    <script type="text/javascript" src="code.js"/></script>
   </body>
 </html>
