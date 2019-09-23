@@ -1,3 +1,5 @@
+const divs_num = 100
+
 let getRandomColor = () => {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -7,19 +9,21 @@ let getRandomColor = () => {
   return color;
 }
 
-let onKeyPressHandler = () => {
+const colors = Array(divs_num).fill(null).map(() => getRandomColor())
+const default_interval = 5;
+
+let colorChangeHandler = () => {
+  colors.unshift(getRandomColor());
+  colors.pop();
   var divs = document.getElementsByTagName("div"), i=divs.length;
   while (i--) {
-    divs[i].setAttribute("style", "background-color: " + getRandomColor() + ";");
+    divs[i].setAttribute("style", "background-color: " + colors[i] + ";");
   } 
 }
 
 let createContainer = (parent) => {
   let container = document.createElement("div");
-  container.className = "container";
-
-  let properties = "width: 75%; height: 75%; display:flex; justify-content:center; align-items:center;";
-  container.style.cssText = properties;
+  container.classList.add("container")
 
   parent.appendChild(container);
   return container;
@@ -32,6 +36,10 @@ let createNContainers = (n, parent = document.body) => {
   }
 }
 
-// console.log(document.getElementById("whole-page"))
-createNContainers(10, document.getElementById("whole-page"));
-window.addEventListener("keydown", onKeyPressHandler, true);
+let whole_page = document.getElementById("whole-page"); 
+createNContainers(divs_num, whole_page)
+
+let interval = undefined;
+window.addEventListener("keydown", () => {
+  interval = interval ? clearInterval(interval) : setInterval(colorChangeHandler, default_interval);
+}, false)
