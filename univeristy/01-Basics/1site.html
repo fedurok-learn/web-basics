@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Tutorial</title>
+  </head>
+  <body>
+    <article>
+      ACT I
+      SCENE I. Elsinore. A platform before the castle.
+      FRANCISCO at his post. Enter to him BERNARDO
+    </article>
+    <br/>
+    <aside>
+      Some aside content
+    </aside>
+    <br/>
+  <audio autobuffer autoloop loop controls>
+    <source src="audio/yo_moyo.mp3"/> 
+    Audio
+  </audio>
+  <br/>
+  <p dir="ltr">This arabic word <bdi>ARABIC_PLACEHOLDER</bdi> is automatically displayed right-to-left.</p>
+  <br/>
+  <canvas id="AtariGame" width="480" height="320"></canvas></canvas>
+  <script>
+  var canvas = document.getElementById("AtariGame")
+  var ctx = canvas.getContext("2d")
+  //////////////////////////////////////////////////
+  // Ball
+  //////////////////////////////////////////////////
+  var x = canvas.width / 2, y = canvas.height - 30
+  var dx = 2, dy = 2
+  const ballRadius = 10;
+  var shouldBounce = () => {
+  if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+  dx = -dx;
+  }
+  if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+  dy = -dy;
+  }
+  }
+  var drawBall = () => {
+  ctx.beginPath()
+  ctx.arc(x, y, ballRadius, 0, 2 * Math.PI)
+  ctx.fillStyle = "#0095DD"
+  ctx.fill()
+  ctx.closePath()
+  }
+  //////////////////////////////////////////////////
+  // Paddle
+  //////////////////////////////////////////////////
+  var paddleHeight = 10;
+  var paddleWidth = 75;
+  var paddleX = (canvas.width-paddleWidth) / 2;
+  var drawPaddle = () => {
+  ctx.beginPath()
+  ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight)
+  ctx.fillStyle = "#0095DD"
+  ctx.fill()
+  ctx.closePath()
+  }
+  //////////////////////////////////////////////////
+  // Draw
+  //////////////////////////////////////////////////
+  var draw = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  
+  shouldBounce()
+  drawBall()
+  drawPaddle()
+  x += dx
+  y += dy
+  }
+  setInterval(draw, 10)
+  </script>
+  <br/>
+  <input type="text" list="browsers">
+  <datalist id="hahah">
+    <option value="lol">
+    <option value="kek">
+  </datalist>
+  <br/>
+  <details>
+    <summary>Show detail</summary>
+    <p>Something in detail</p>
+  </details>
+  <br/>
+  <dialog open>
+    <p>Diaglog!</p>
+  </dialog>
+  <br/>
+  <embed src="video/clap.mp4" width="400px" height="200px">
+  <br/>
+  <figure>
+    <figcaption>NASA - Space Shuttle Discovery</figcaption>
+  </figure>
+  <br/>
+  <footer>
+    <nav>
+        <p><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></p>
+    </nav>
+    <p>Copyright &copy; 2014 Tutorial Republic</p>
+  </footer>
+  <br/>
+  <header>
+    <h1>Tutorial Republic</h1>
+    <nav>
+        <p><a href="#">Home</a> | <a href="#">About</a> | <a href="#">Contact</a></p>
+    </nav>
+  </header>
+  <br/>
+  <main role="main">
+    <p>Geckos are a group of Thdjsuysmall, usually nocturnalusually lizards. ardjsu found on djsuvdjsury contindjsunt djsuxcdjsupt Australia.</p>
+  </main>
+  <br/>
+  <p>This is some <mark>highlighted text</mark></p>
+  <br/>
+  <menu type="context">
+    <menuitem label="Zoom In">1</menuitem>
+    <menuitem label="Zoom Out">2</menuitem>
+    <menuitem label="Reload Image">3</menuitem>
+  </menu>
+  <br/>
+  <meter value='0.2' min='0.0' max='0.5'>0.2 out of 0.5</meter>
+  <br/>
+  <nav>
+    <ul>
+      <li href="#">Fst</li>
+      <li href="#">Snd</li>
+    </ul>
+  </nav>
+  <br/>
+  <form oninput="result.value = parseInt(a.value) + parseInt(b.value)">
+    <input type="range" id="a" value="50"> +
+    <input type="number" id="b" value="100"> =
+    <output name="result" for="a b"></output>
+  </form>
+  <br/>
+  <picture>
+    <img src="images/surfer2.jpg" />
+  </picture>
+  <br/>
+  <progress value="99" max="100"><span>0</span>%</progress>
+  <br/>
+  <section><h1>Section</h1></section>
+  <br/>
+  <template>
+    <p>Aksiksi</p>
+  </template>
+  <br/>
+  <p>The concert took place on <time datetime="2016-12-31 12:00">31 Dec</time>.</p>
+  <br/>
+  <video autobuffer autoloop loop controls>
+    <source src="video/bombom.mp4" type="video/mp4">
+
+    <track default kind="captions" srclang="en">
+
+    Sorry, your browser doesn't support embedded videos.
+</video>
+<wbr/>
+<div>
+  <p>Text</p>
+</div>
+</body>
+</html>
