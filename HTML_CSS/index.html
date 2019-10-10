@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <title>Frontend practice</title>
-    <link href="styles.css" rel="stylesheet"/>
-  </head>
-  <body>
-    <div class="header">
-      <div class='logo'><h1>Frontend practice</h1></div>
-      <ul class='menu'>
-        <li class='dropdown'>
-          <h2><span>Projects</span></h2>
-          <ul class='features-menu'>           <!-- Start of submenu -->
-            <li><a href='InternetingIsHard/02-Basics/basics.html'>Basics</a></li>
-            <li><a href='InternetingIsHard/03-LinksAndImages/links.html'>Links Usage</a></li>
-            <li><a href='InternetingIsHard/04-HelloCSS/hello-css.html'>Hello CSS</a></li>
-            <li><a href='InternetingIsHard/05-CSSBoxModel/boxes.html'>CSS Box Model</a></li>
-            <li><a href='InternetingIsHard/06-CSSSelectors/selectors.html'>Selectors</a></li>
-            <li><a href='InternetingIsHard/07-Floats/floats.html'>Floats</a></li>
-            <li><a href='InternetingIsHard/08-Flexbox/flexbox.html'>Flexbox</a></li>
-            <li><a href='InternetingIsHard/09-2-AdvancedPositioning/menu.html'>Advanced Positioning</a></li>
-          </ul>                                <!-- End of submenu -->
-        </li>
-        <li class='dropdown'>
-          <h2><span>Connect</span></h2>
-          <ul class='features-menu'>           <!-- Start of submenu -->
-            <li><a href='https://github.com/B1Z0N'>Github</a></li>
-            <li><a href='https://ua.linkedin.com/in/nikolaus-fedurko-461b67183'>LinkedIn</a></li>
-          </ul>                                <!-- End of submenu -->
-        </li>
-      </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Frontend practice</title>
+  <link href="styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header">
+    <div class='logo'>
+      <h1>Frontend practice</h1>
     </div>
-    
-    <div class="page">
-      <p>All my life before <time datetime="2019-20-14 18:09">this</time> moment, I was telling myself 
-      that I ain't gonna need to know this new and fashion thing called "Internet". "Know" means as a developer,
-      since I'm already confident user of this web.</p>
-      <p>But now I've changed my mind. Internet is opening too wide opporunities, so we can't be that narrow to close 
-      our eyes and lose it. That's true and the reason is that:<br/><br/>
-      <q><strong>the most powerful part of human nature is an ability to communicate</strong></q>.
-      </p>
-    </div>
-  </body>
+    <nav class='menu'>
+      <li class='dropdown'>
+        <h2><span>Projects</span></h2>
+        <nav class='features-menu'>
+          <!-- Start of submenu -->
+      <li><a href='InternetingIsHard/02-Basics/basics.html'>Basics</a></li>
+      <li><a href='InternetingIsHard/03-LinksAndImages/links.html'>Links Usage</a></li>
+      <li><a href='InternetingIsHard/04-HelloCSS/hello-css.html'>Hello CSS</a></li>
+      <li><a href='InternetingIsHard/05-CSSBoxModel/boxes.html'>CSS Box Model</a></li>
+      <li><a href='InternetingIsHard/06-CSSSelectors/selectors.html'>Selectors</a></li>
+      <li><a href='InternetingIsHard/07-Floats/floats.html'>Floats</a></li>
+      <li><a href='InternetingIsHard/08-Flexbox/flexbox.html'>Flexbox</a></li>
+      <li><a href='InternetingIsHard/09-2-AdvancedPositioning/menu.html'>Advanced Positioning</a></li>
+    </nav> <!-- End of submenu -->
+    </li>
+    <li class='dropdown'>
+      <h2><span>Connect</span></h2>
+      <nav class='features-menu'>
+        <!-- Start of submenu -->
+    <li><a href='https://github.com/B1Z0N'>Github</a></li>
+    <li><a href='https://ua.linkedin.com/in/nikolaus-fedurko-461b67183'>LinkedIn</a></li>
+    </nav> <!-- End of submenu -->
+    </li>
+    </nav>
+  </header>
+
+  <main class="page">
+    <article>
+      <section>
+        <p>All my life before <time datetime="2019-20-14 18:09">this</time> moment, I was telling myself
+          that I ain't gonna need to know this new and fashion thing called "Internet". "Know" means as a developer,
+          since I'm already confident user of this web.</p>
+      </section>
+      <section>
+        <p>But now I've changed my mind. Internet is opening too wide opporunities, so we can't be that narrow to close
+          our eyes and lose it. That's true and the reason is that:<br /><br />
+          <q><strong>the most powerfnav part of human nature is an ability to communicate</strong></q>.
+        </p>
+      </section>
+    </article>
+  </main>
+</body>
+
 </html>
