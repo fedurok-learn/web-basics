@@ -5,7 +5,7 @@ while(confirm("So, you want me to predict your future, huh?")) {
     var city = prompt("City")
 
     if(confirm("You want me to predict your personal life?")) {
-        alert(`You will get married with ${partner_name} and you will have ${children_num}`)
+        alert(`You will get married with ${partnerName} and you will have ${childrenNum}`)
     }
     else if(confirm("You want me to predict your professional life?")) {
         alert(`You will move to the ${city} city to work as ${profession}`)
