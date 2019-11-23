@@ -83,6 +83,13 @@ const init = () => {
       y: touchEvent.touches[0].clientY - rect.top
     };
   }
+
+  // Prevent scrolling when touching the canvas
+  window.ontouchstart = window.ontouchmove = window.ontouchend = (event) => {
+    if (event.touches.length>1) { //If there is more than one touch
+        event.preventDefault();
+    }
+  }
 };
 
 const setDrawingColor = obj => {
