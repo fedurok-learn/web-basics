@@ -39,6 +39,28 @@ const init = () => {
     },
     false
   );
+
+  canvas.addEventListener(
+    "touchmove",
+    e => {
+      findXY("move", e);
+    },
+    false
+  );
+  canvas.addEventListener(
+    "touchstart",
+    e => {
+      findXY("down", e);
+    },
+    false
+  );
+  canvas.addEventListener(
+    "touchend",
+    e => {
+      findXY("up", e);
+    },
+    false
+  );
 };
 
 const setDrawingColor = obj => {
