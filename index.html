@@ -1,19 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <title>Frontend practice</title>
-    <link href="site/styles.css" rel="stylesheet"/>
-  </head>
-  <body>
-    <div class="main-body">
-      <ul>
-        <li class="practice-item"><h1><a href="HTML_CSS/index.html">HTML&CSS</a></h1></li>
-        <li class="practice-item"><h1>Coming soon..</h1></li>
-      </ul>
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+    .bigcol {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1>Frontend practice</h1>
+      <p>My projects to gain some knowledge</p>
     </div>
-    <div class="footer">
-      <h1><a href="https://github.com/B1Z0N/frontend-basics">This repository</a></h1>
+  </div>
+
+  <h3>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-sm-6 bigcol">
+          <a href="HTML_CSS/index.html">
+            Basic HTML & CSS practice
+          </a>
+          <span class="badge badge-pill badge-dark">31th October 2019</span>
+        </div>
+        <div class="col-sm-6 bigcol">
+          <a href="DOM/on-key-press/index.html">
+            Funny effect(just press the button)
+          </a>
+          <span class="badge badge-pill badge-dark">5th November 2019</span>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-sm-6 bigcol">
+          <a href="http://www.workspide.tk/">
+            Work search site
+          </a>
+          <span class="badge badge-pill badge-dark">15th November 2019</span>
+          <p>
+            <a href="https://github.com/B1Z0N/workspide">
+              (github)
+            </a>
+          </p>
+        </div>
+        <div class="col-sm-6 bigcol">
+          <a href="multiusercanvas/index.html">
+            User canvas
+          </a>
+          <span class="badge badge-pill badge-dark">23th November 2019</span>
+        </div>
+      </div>
     </div>
-  </body>
+  </h3>
+  <footer class="container-fluid text-center">
+    <a href="https://github.com/B1Z0N">
+      <h3>Author</h3>
+    </a>
+  </footer>
+
+</body>
+
 </html>
