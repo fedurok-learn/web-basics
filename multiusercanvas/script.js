@@ -10,7 +10,7 @@ var canvas,
 
 const init = () => {
   canvas = document.getElementById("canv");
-  canvas.width  = window.innerWidth;
+  canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   ctx = canvas.getContext("2d");
@@ -40,31 +40,53 @@ const init = () => {
     false
   );
 
-  canvas.addEventListener(
-    "touchmove",
-    e => {
-      findXY("move", e);
-    },
-    false
-  );
+  // Set up touch events for mobile, etc
   canvas.addEventListener(
     "touchstart",
-    e => {
-      findXY("down", e);
+    function(e) {
+      mousePos = getTouchPos(canvas, e);
+      var touch = e.touches[0];
+      var mouseEvent = new MouseEvent("mousedown", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(mouseEvent);
     },
     false
   );
   canvas.addEventListener(
     "touchend",
-    e => {
-      findXY("up", e);
+    function(e) {
+      var mouseEvent = new MouseEvent("mouseup", {});
+      canvas.dispatchEvent(mouseEvent);
     },
     false
   );
+  canvas.addEventListener(
+    "touchmove",
+    function(e) {
+      var touch = e.touches[0];
+      var mouseEvent = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(mouseEvent);
+    },
+    false
+  );
+
+  // Get the position of a touch relative to the canvas
+  function getTouchPos(canvasDom, touchEvent) {
+    var rect = canvasDom.getBoundingClientRect();
+    return {
+      x: touchEvent.touches[0].clientX - rect.left,
+      y: touchEvent.touches[0].clientY - rect.top
+    };
+  }
 };
 
 const setDrawingColor = obj => {
-  lineWidth = 4
+  lineWidth = 4;
   switch (obj.id) {
     case "green":
       DrawingColor = "green";
@@ -83,7 +105,7 @@ const setDrawingColor = obj => {
       break;
     case "black":
       drawingColor = "black";
-      lineWidth = 15
+      lineWidth = 15;
       break;
     case "white":
       drawingColor = "white";
@@ -102,38 +124,38 @@ const drawLine = () => {
 };
 
 const drawDot = () => {
-  ctx.beginPath()
-  ctx.fillStyle = drawingColor
-  ctx.fillRect(currX, currY, 2, 2)
-  ctx.closePath()
-}
+  ctx.beginPath();
+  ctx.fillStyle = drawingColor;
+  ctx.fillRect(currX, currY, 2, 2);
+  ctx.closePath();
+};
 
 const findXY = (res, e) => {
   const updateCoords = () => {
-    prevX = currX
-    prevY = currY
-    currX = e.clientX
-    currY = e.clientY
-  }
+    prevX = currX;
+    prevY = currY;
+    currX = e.clientX;
+    currY = e.clientY;
+  };
 
   switch (res) {
     case "down": {
-      updateCoords()
+      updateCoords();
       // drawDot()
-      drawingFlag = true
-            
-      break
+      drawingFlag = true;
+
+      break;
     }
     case "up": {
-      drawingFlag = false
-      break
+      drawingFlag = false;
+      break;
     }
     case "move": {
       if (drawingFlag) {
-        updateCoords()
-        drawLine()
+        updateCoords();
+        drawLine();
       }
-      break
+      break;
     }
   }
 };
