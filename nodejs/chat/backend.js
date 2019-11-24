@@ -23,12 +23,12 @@ http
     fs.readFile(path, (err, data) => {
       if (err) {
         res.writeHeader(400, { "content-type": "text/plain" });
-        data = "No such file"
-    } else {
-        res.writeHeader(200, { "content-type": mimeType })
-    }
-    
-    res.write(data, (err) => res.end());
+        data = "No such file";
+      } else {
+        res.writeHeader(200, { "content-type": mimeType });
+      }
+
+      res.write(data, err => res.end());
     });
   })
   .listen(PORT);
