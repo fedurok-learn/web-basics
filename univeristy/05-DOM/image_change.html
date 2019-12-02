@@ -17,6 +17,74 @@
 </head>
 
 <body>
+    <div class="container my-5">
+        <div class="row">
+            <img id="sheep-img" src="img/sheep.jpeg" class="mx-auto" width="60%">
+        </div>
+
+        <form onsubmit="return changeImgProperties()">
+            <label for="width-field"><strong>Зміна розмірів</strong></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="width-addon">Ширина (width)</span>
+                </div>
+                <input type="text" class="form-control" id="width-field" aria-describedby="width-addon">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="height-addon">Висота (height)</span>
+                </div>
+                <input type="text" class="form-control" id="height-field" aria-describedby="height-addon">
+            </div>
+
+            <label for="border-width-field"><strong>Зміна рамки</strong></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="border-width-addon">Товщина рамки</span>
+                </div>
+                <input type="text" class="form-control" id="border-width-field" aria-describedby="border-width-addon">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="border-height-addon">Колір рамки</span>
+                </div>
+                <input type="text" class="form-control" id="border-height-field" aria-describedby="border-height-addon">
+            </div>
+
+            <label for="altext-field"><strong>Додатково</strong></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="altext-addon">Альтернативний текст</span>
+                </div>
+                <input type="text" class="form-control" id="altext-field" aria-describedby="altext-addon">
+            </div>
+
+            <input type="submit" value="Застосувати параметри" class="btn btn-primary mt-3">
+        </form>
+    </div>
+
+    <script>
+        'use strict';
+
+        const img = document.getElementById("sheep-img");
+        const width = document.getElementById('width-field');
+        const height = document.getElementById('height-field');
+        const borderWidth = document.getElementById('border-width-field');
+        const borderColor = document.getElementById('border-color-field');
+        const altText = document.getElementById('altext-field');
+
+        const set = (key, value) => {
+            if (value) key = value;
+        }
+
+        const changeImgProperties = () => {
+            if(width.value) img.width = width.value;
+            if(height.value) img.height = height.value;
+
+            return false;
+        };
+
+    </script>
 </body>
 
 
