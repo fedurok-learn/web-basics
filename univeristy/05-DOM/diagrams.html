@@ -55,7 +55,7 @@
         </div>
         <div class="row text-center align-items-end" style="height: 500px;" id="diagram-container">
             <div class="col" id="diagram1" style="height: 75%; background-color:yellow;">
-                <h3 class="mt-3">Mark</h3>
+                <h3 class="mt-3" id="diagram-name-1">Mark</h3>
             </div>
         </div>
     </div>
@@ -65,23 +65,40 @@
 
         const tBody = document.getElementById('table-body');
         const diagramContainer = document.getElementById('diagram-container');
+        const diagramColors = ['yellow', 'red', 'green', 'blue', 'tomato', 'magenta']
         var stNum = 1;
 
         const setFieldActions = (studentNum) => {
             const isLatin = (val) => /^[a-zA-Z]+$/.test(val);
 
-            document.getElementById(`student-name-${studentNum}`).onkeypress = (e) => { 
-                if (e.keyCode == 13) changeDiagramName(studentNum, e.value)
-                if (!isLatin(String.fromCharCode(e.which))) e.preventDefault(); 
-            };
-            document.getElementById(`student-mark-${studentNum}`).onkeypress = (e) => { 
-                if (e.keyCode == 13) changeDiagramValue(studentNum, e.value)
-                if (isNaN(String.fromCharCode(e.which))) e.preventDefault(); 
-            };
-        }
-        setFieldLimitations(stNum);
+            document.getElementById(`student-name-${studentNum}`).onkeypress = (e) => {
+                if (e.which == 13) {
+                    const newVal = e.target.innerText + String.fromCharCode(e.which);
+                    changeDiagramName(studentNum, newVal);
+                    e.preventDefault();
+                }
 
-        const addStudent = (name="Name", mark=0) => {
+                if (!isLatin(String.fromCharCode(e.which))) e.preventDefault();
+            };
+            document.getElementById(`student-mark-${studentNum}`).onkeypress = (e) => {
+                if (e.which == 13) {
+                    if(e.target.innerText > 100) e.target.innerText = "100";
+                    changeDiagramValue(studentNum, e.target.innerText);
+                    e.preventDefault()
+                }
+
+                if (isNaN(String.fromCharCode(e.which))) e.preventDefault();
+            };
+
+            document.getElementById(`student-name-${studentNum}`).onblur = 
+                (e) => changeDiagramName(studentNum, e.target.innerText);
+
+            document.getElementById(`student-mark-${studentNum}`).onblur = 
+                (e) => changeDiagramValue(studentNum, e.target.innerText);
+        }
+        setFieldActions(stNum);
+
+        const addStudent = (name = "Name", mark = 50) => {
             stNum++;
 
             // append new student to the list
@@ -93,37 +110,46 @@
                 <td><p contenteditable="true" id="student-mark-${stNum}">${mark}</p></td>
             `;
             tBody.appendChild(tr);
-            
+
             // disable false characters from typing
             setFieldActions(stNum);
-            
+            addDiagram(name, mark);
         }
 
         const removeStudent = (num) => {
             const student = document.getElementById(`student${num}`);
             student.parentNode.removeChild(student);
+            const diagram = document.getElementById(`diagram${num}`);
+            diagram.parentNode.removeChild(diagram);
         }
 
         const addDiagram = (name, mark) => {
-            const diagram = document.createElement('diagram');
-            diagram.id = `student${stNum}`;
-            diagram.innerHTML = `
-                <td><button type="button" class="btn btn-link" onclick="removeStudent(${stNum})">Видалити</button></td>
-                <td><p contenteditable="true" id="student-name-${stNum}">${name}</p></td>
-                <td><p contenteditable="true" id="student-mark-${stNum}">${mark}</p></td>
-            `;
+            const diagram = document.createElement('div');
+            diagram.id = `diagram${stNum}`;
+            diagram.className = "col";
+            diagram.style.cssText = `height: ${mark}%; background-color: ${genBgColor()};`
+            diagram.innerHTML = `<h3 class="mt-3" id="diagram-name-${stNum}">${name}</h3>`;
             diagramContainer.appendChild(diagram);
-            <div class="col" id="diagram1" style="height: 75%; background-color:yellow;">
-                <h3 class="mt-3">Mark</h3>
-            </div>
+        }
+
+        const genBgColor = () => {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
 
         const changeDiagramName = (num, val) => {
-            
+            console.log(val);
+            document.getElementById(`diagram-name-${num}`).innerText = val;
         }
-        
-        const changeDiagramValue = (num, val) => {
 
+        const changeDiagramValue = (num, val) => {
+            console.log(val);
+            console.log(num);
+            document.getElementById(`diagram${num}`).style.height = `${val}%`;
         }
     </script>
 </body>
