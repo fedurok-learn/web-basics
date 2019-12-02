@@ -46,9 +46,9 @@
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="border-height-addon">Колір рамки</span>
+                    <span class="input-group-text" id="border-color-addon">Колір рамки</span>
                 </div>
-                <input type="text" class="form-control" id="border-height-field" aria-describedby="border-height-addon">
+                <input type="text" class="form-control" id="border-color-field" aria-describedby="border-color-addon">
             </div>
 
             <label for="altext-field"><strong>Додатково</strong></label>
@@ -73,15 +73,76 @@
         const borderColor = document.getElementById('border-color-field');
         const altText = document.getElementById('altext-field');
 
-        const set = (key, value) => {
-            if (value) key = value;
+        const allFields = [width, height, borderWidth, borderColor, altText];
+
+        const resetColors = () => {
+            allFields.forEach(
+                (elem) => {
+                    elem.style.borderColor = "";
+                }
+            )
+        }
+
+        const checkMandatoryFields = () => {
+            var success = true;
+            allFields.forEach(
+                (elem) => {
+                    if (!elem.value) {
+                        elem.style.borderColor = "red";
+                        success = false;
+                    }
+                }
+            )
+
+            return success;
+        }
+
+        const checkPositiveNumericFields = () => {
+            const isNumeric = (val) => !isNaN(val);
+
+            var success = true;
+            [width, height, borderWidth].forEach(
+                (elem) => {
+                    if (!isNumeric(elem.value) || elem.value < 0) {
+                        elem.style.borderColor = "red";
+                        success = false;
+                    }
+                }
+            )
+
+            return success;
+        }
+
+        const checkTextFields = () => {
+            const isLatin = (val) => /^[a-zA-Z]+$/.test(val);
+
+            var success = true;
+            [altText].forEach(
+                (elem) => {
+                    if (!isLatin(elem.value)) {
+                        elem.style.borderColor = "red";
+                        success = false;
+                    }
+                }
+            )
+
+            return success;
         }
 
         const changeImgProperties = () => {
-            if(width.value) img.width = width.value;
-            if(height.value) img.height = height.value;
+            resetColors();
+            var isMandatory = checkMandatoryFields();
+            var isPositive = checkPositiveNumericFields();
+            var isLatin = checkTextFields();
 
-            return false;
+            if (isMandatory && isPositive && isLatin) {
+                img.width = width.value;
+                img.height = height.value;
+                img.style.border = `${borderWidth.value}px solid ${borderColor.value}`;
+                img.alt = altText.value;
+            }
+
+            return false; // so that form won't be sent
         };
 
     </script>
