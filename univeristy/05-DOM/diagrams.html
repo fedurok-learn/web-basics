@@ -78,7 +78,9 @@
             // trigger enter and update diagram height
             document.getElementById(`student-mark-${studentNum}`).onkeypress = (e) => {
                 if (e.which == 13) {
-                    if(e.target.innerText > 100) e.target.innerText = "100";
+                    var newVal = e.target.innerText;
+                    if(newVal > 100 || (newVal[0] === '0' && newVal.length > 1)) 
+                        e.target.innerText = "100";
                     changeDiagramValue(studentNum, e.target.innerText);
                     e.preventDefault()
                     e.target.blur()
@@ -137,8 +139,9 @@
             // that will show student mark
             var tooltip = document.createElement('p');
             tooltip = tooltip.appendChild(document.createElement('h2'))
+            var curNum = stNum;
             diagram.onmouseover = () => {
-                tooltip.innerText = document.getElementById(`student-mark-${stNum}`).innerText;
+                tooltip.innerText = document.getElementById(`student-mark-${curNum}`).innerText;
                 diagram.appendChild(tooltip);
             }
             diagram.onmouseleave = () => {
