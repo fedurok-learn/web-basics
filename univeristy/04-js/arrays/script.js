@@ -17,21 +17,3 @@ const doubledEur = arr
 
 console.log(sumOfUSDLessThan100);
 console.log(doubledEur);
-
-if (process.argv.length < 3) {
-  console.log(
-    "usage: %s <cost1>[currency] [cost2 cost3 ...]",
-    "Example: %s 9$ 9$",
-    "node ./"
-  );
-  process.exit(1);
-} else {
-  console.log(
-    "Total: %d%s",
-    process.argv
-      .slice(2)
-      .map(elem => elem.slice(0, -1))
-      .reduce((e1, e2) => e1 + e2, 0),
-    process.argv.slice(2)[0].slice(-1)
-  );
-}
