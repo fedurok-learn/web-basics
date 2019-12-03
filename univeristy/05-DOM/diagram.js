@@ -52,26 +52,30 @@ const setFieldActions = studentNum => {
 
   // only latin letters allowed at name field
   // trigger enter and update diagram label
-  document.getElementById(
-    `student-name-${studentNum}`
-  ).onkeypress = processName;
+  document
+    .getElementById(`student-name-${studentNum}`)
+    .addEventListener("keypress", processName);
   // only numbers allowed at mark field
   // trigger enter and update diagram height
-  document.getElementById(
-    `student-mark-${studentNum}`
-  ).onkeypress = processMark;
+  document
+    .getElementById(`student-mark-${studentNum}`)
+    .addEventListener("keypress", processMark);
 
   // trigger when field looses focus
   // (similar to enter key action, just change name or value of diagram)
-  document.getElementById(`student-name-${studentNum}`).onblur = e => {
-    e.target.innerText = fixMark(e.target.innerText);
-    changeDiagramName(studentNum, e.target.innerText);
-  };
+  document
+    .getElementById(`student-name-${studentNum}`)
+    .addEventListener("blur", e => {
+      e.target.innerText = fixMark(e.target.innerText);
+      changeDiagramName(studentNum, e.target.innerText);
+    });
 
-  document.getElementById(`student-mark-${studentNum}`).onblur = e => {
-    e.target.innerText = fixMark(e.target.innerText);
-    changeDiagramValue(studentNum, e.target.innerText);
-  };
+  document
+    .getElementById(`student-mark-${studentNum}`)
+    .addEventListener("blur", e => {
+      e.target.innerText = fixMark(e.target.innerText);
+      changeDiagramValue(studentNum, e.target.innerText);
+    });
 };
 
 const addStudent = (name = "", mark = -1) => {
@@ -84,10 +88,16 @@ const addStudent = (name = "", mark = -1) => {
   const tr = document.createElement("tr");
   tr.id = `student${stNum}`;
   tr.innerHTML = `
-        <td><button type="button" class="btn btn-link" onclick="removeStudentnDiagram(${stNum})">Видалити</button></td>
+        <td><button type="button" class="btn btn-link">Видалити</button></td>
         <td><p contenteditable="true" id="student-name-${stNum}">${name}</p></td>
         <td><p contenteditable="true" id="student-mark-${stNum}">${mark}</p></td>
     `;
+
+  // set remove button action
+  var currentStudentNum = stNum;
+  tr.firstElementChild.firstElementChild.addEventListener("click", () => {
+    removeStudentnDiagram(currentStudentNum);
+  });
   tBody.appendChild(tr);
 
   // disable false characters from typing
@@ -116,15 +126,15 @@ const addDiagram = (name, mark) => {
   var tooltip = document.createElement("p");
   tooltip = tooltip.appendChild(document.createElement("h2"));
   var curNum = stNum;
-  diagram.onmouseover = () => {
+  diagram.addEventListener("mouseover", () => {
     tooltip.innerText = document.getElementById(
       `student-mark-${curNum}`
     ).innerText;
     diagram.appendChild(tooltip);
-  };
-  diagram.onmouseleave = () => {
+  });
+  diagram.addEventListener("mouseleave", () => {
     diagram.removeChild(tooltip);
-  };
+  });
 };
 
 const genBgColor = () => {
