@@ -14,6 +14,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="image_change.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
             <img id="sheep-img" src="img/sheep.jpeg" class="mx-auto" width="60%">
         </div>
 
-        <form onsubmit="return changeImgProperties()">
+        <form id="image-form"> //!! addEventListener
             <label for="width-field"><strong>Зміна розмірів</strong></label>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -64,87 +65,6 @@
     </div>
 
     <script>
-        'use strict';
-
-        const img = document.getElementById("sheep-img");
-        const width = document.getElementById('width-field');
-        const height = document.getElementById('height-field');
-        const borderWidth = document.getElementById('border-width-field');
-        const borderColor = document.getElementById('border-color-field');
-        const altText = document.getElementById('altext-field');
-
-        const allFields = [width, height, borderWidth, borderColor, altText];
-
-        const resetColors = () => {
-            allFields.forEach(
-                (elem) => {
-                    elem.style.borderColor = "";
-                }
-            )
-        }
-
-        const checkMandatoryFields = () => {
-            var success = true;
-            allFields.forEach(
-                (elem) => {
-                    if (!elem.value) {
-                        elem.style.borderColor = "red";
-                        success = false;
-                    }
-                }
-            )
-
-            return success;
-        }
-
-        const checkPositiveNumericFields = () => {
-            const isNumeric = (val) => !isNaN(val);
-
-            var success = true;
-            [width, height, borderWidth].forEach(
-                (elem) => {
-                    if (!isNumeric(elem.value) || elem.value < 0) {
-                        elem.style.borderColor = "red";
-                        success = false;
-                    }
-                }
-            )
-
-            return success;
-        }
-
-        const checkTextFields = () => {
-            const isLatin = (val) => /^[a-zA-Z]+$/.test(val);
-
-            var success = true;
-            [altText].forEach(
-                (elem) => {
-                    if (!isLatin(elem.value)) {
-                        elem.style.borderColor = "red";
-                        success = false;
-                    }
-                }
-            )
-
-            return success;
-        }
-
-        const changeImgProperties = () => {
-            resetColors();
-            var isMandatory = checkMandatoryFields();
-            var isPositive = checkPositiveNumericFields();
-            var isLatin = checkTextFields();
-
-            if (isMandatory && isPositive && isLatin) {
-                img.width = width.value;
-                img.height = height.value;
-                img.style.border = `${borderWidth.value}px solid ${borderColor.value}`;
-                img.alt = altText.value;
-            }
-
-            return false; // so that form won't be sent
-        };
-
     </script>
 </body>
 
