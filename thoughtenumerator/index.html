@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Thoughts enumerator</title>
+    <script>
+        const thoughtsKey = 'thoughts';
+        Math.randInt = (a, b) => Math.floor(Math.random() * (b - a) + a);
+        
+        let thoughts = localStorage.getItem(thoughtsKey);
+        thoughts = JSON.parse(thoughts !== null ? thoughts : window.prompt("Enter new thoughts json array"));
+        
+        if (thoughts.length == 0) {
+            let startAgain = window.confirm("You've used all questions, start again?");
+            if (startAgain) {
+                localStorage.removeItem(thoughtsKey);
+                location.reload();
+            }
+        } else {
+            const index = Math.randInt(0, thoughts.length);
+            const el = thoughts[index];
+            window.alert(el);
+
+            thoughts.splice(index, 1);
+            localStorage.setItem(thoughtsKey, JSON.stringify(thoughts));
+        }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
